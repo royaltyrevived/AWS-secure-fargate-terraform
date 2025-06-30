@@ -13,13 +13,13 @@ variable "environment" {
 variable "project_name" {
   description = "Project name"
   type        = string
-  default     = "holista"
+  default     = ""
 }
 
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string
-  default     = "10.0.0.0/16"
+  default     = ""
 }
 
 variable "certificate_arn" {
@@ -69,8 +69,8 @@ variable "services" {
     environment_vars  = map(string)
   }))
   default = {
-    iam = {
-      ecr_repo_name     = "iam-service-dev"
+    service1 = {
+      ecr_repo_name     = "service repo"
       container_port    = 3001
       service_port      = 9001
       cpu               = "256"
@@ -82,8 +82,8 @@ variable "services" {
       load_balanced     = true
       environment_vars  = {}
     }
-    nats = {
-      ecr_repo_name     = "nats-service-dev"
+    service2 = {
+      ecr_repo_name     = "service repo"
       container_port    = 4222
       service_port      = 4222
       cpu               = "256"
@@ -95,8 +95,8 @@ variable "services" {
       load_balanced     = false
       environment_vars  = {}
     }
-    redis = {
-      ecr_repo_name     = "redis-service-dev"
+    service3 = {
+      ecr_repo_name     = "service repo"
       container_port    = 6379
       service_port      = 6379
       cpu               = "256"
